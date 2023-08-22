@@ -34,22 +34,22 @@ func factorsArray(number int) []int{
 
 
 	
-	for check := number / 2 ; check >= 2 ; check-- {
+	for check := 2 ; check <= number / 2 ; check++{
+
 		if number % check == 0 {
 			factors = append(factors, check)	
 			factors = append(factors, number/check)	
-			check = number / check	
+			break	
 		}
 
 	}
-
-	for _ , factor := range factors{
+	for index , factor := range factors{
 		if isPrime(factor) == false {
-			factorsArray(factor)
-			continue
+			new_factors := factorsArray(factor)
+			factors[index] = new_factors[0]
+			factors = append(factors, new_factors[1:]...)
 		}	
 
-		fmt.Println(factor)
 	} 
 
 	return factors

@@ -3,20 +3,20 @@
 <p>What is the $10\,001$st prime number?</p>
 */
 
-
 package main
 
-import ("fmt")
+import (
+	"fmt"
+)
 
-func isPrime(number int) bool{
-	
+func isPrime(number int) bool {
+
 	var is_prime bool = true
 
+	for check := number / 2; check >= 2; check-- {
 
-	for check := number / 2 ; check >= 2 ; check-- {
+		if number%check == 0 {
 
-		if number % check == 0 {
-			
 			is_prime = false
 			break
 
@@ -27,21 +27,20 @@ func isPrime(number int) bool{
 	return is_prime
 }
 
+func main() {
 
-func main(){
-
-	var prime_number int 
+	var prime_number int
 	var last_prime int = 1
 
 	fmt.Println("please enter nubmber:")
 	fmt.Scan(&prime_number)
-	
-	for index := 1 ; index <= prime_number ; index ++{
+
+	for index := 1; index <= prime_number; index++ {
 		var prime_check bool = false
-		fmt.Print(index, " ")	
-		for number := last_prime + 1 ; prime_check == false ; number ++ {
-			
-			if isPrime(number){
+		fmt.Print(index, " ")
+		for number := last_prime + 1; prime_check == false; number++ {
+
+			if isPrime(number) {
 				last_prime = number
 				fmt.Println(number)
 				prime_check = true
